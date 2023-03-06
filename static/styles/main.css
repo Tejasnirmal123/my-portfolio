@@ -42,6 +42,15 @@ body{
     object-fit: cover;
     border-radius: 50%;
 }
+
+#footer--pic{
+    height: 30px;
+    width: 30px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .hero--content{
     width: 800px;
     margin: 0 auto;
@@ -63,7 +72,8 @@ body{
 .description{
     font-size: 45px;
     text-align: center;
-    margin-top: auto;
+    margin-top: 2em;
+    
 
 }
 
@@ -75,7 +85,7 @@ body{
 
 .intro--name{
     font-size: 80px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .title{
@@ -84,27 +94,47 @@ body{
 }
 
 .project--wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-left: 6em;
-    margin-right: 4em;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2em;
     margin-top: 2em;
     margin-bottom: 2em;
-    
-}
-.about--wrapper{
-    margin-left: 6em;
-    margin-right: 4em;
+    overflow-x: auto;
     
 }
 
+.project--wrapper::-webkit-scrollbar {
+    width: 2px;
+
+}
+
+.project--wrapper::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+ 
+.project--wrapper::-webkit-scrollbar-thumb {
+  background-color: #197c8b;
+  outline: 1px solid slategrey;
+  border-radius: 100px;
+
+}
+
+.project--wrapper::-webkit-scrollbar-thumb:hover{
+    background-color: #197c8b;
+}
+
+
+
 .project--column{
-    width: 300px;
+    min-width: 300px;
     background-color: #fff;
 }
 
 .project--thumbnail{
     width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
 .project--body{
@@ -114,18 +144,28 @@ body{
 .skills--container{
     width: 600px;
     margin: 0 auto;
-    margin-top: 3em;
     padding: 2em;
 }
 
 .skill--wrapper{
     margin-top: 2em;
     margin-bottom: 2em;
+    display: flex;
+    gap: 1em;
+    align-items: start;
+}
+
+.skill--logo{
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+  
 }
 
 .other--skills--wrapper{
     display: flex;
     gap: 1em;
+    flex-wrap: wrap;
 }
 
 .skill--tag{
@@ -133,12 +173,47 @@ body{
     width: fit-content;
     padding: 3px 20px;
     border-radius: 20px;
-    margin-bottom: 5em;
+    
 }
 
 .project--image{
     max-width: 800px;
 }
+
+.footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+.inner--footer{
+    margin: 0;
+    padding: 0;
+    background-color: #354955;
+}
+
+.social--links{
+    display: flex;
+    justify-content: center;
+}
+
+.social--links ul{
+    margin: auto;
+
+}
+
+.social--items{
+    list-style: none;
+}
+
+.social--items a{
+    padding: 10px 20px;
+    font-size: 35px;
+    color: #6cccc6;
+}
+
+
 
 @media (max-width:900px){
     .hero--content--intro{

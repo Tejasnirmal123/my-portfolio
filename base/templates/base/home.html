@@ -10,12 +10,12 @@
     <section class="hero">
         <div class="hero--content">
             <div class="hero--content--intro">
-            <img id="profile_pic" src="{% static 'images/tejas11.jpg' %}" alt="">
+            <img id="profile_pic" src="{% static 'images/tejas9.jpg' %}" alt="">
             <h1 class="intro--name">Tejas <br> Nirmal</h1>
             </div>
             <div class="hero--content--subheadline">
-                <h3 class="description">Fullstack Developer</h3>
-                <p class="slogan">I teach people how to code and build new things </p>
+                <h3 class="description">Python Fullstack Developer</h3>
+                <p class="slogan">Learn From Errors and build new things </p>
             </div>
         </div>
 
@@ -44,20 +44,27 @@
 
     <div class="about--wrapper">
         <h3>More About Me</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+        <p>I am a Python full stack Web-Developer. I build projects to learn from my past mistakes and build new awesome things. I use HTML & CSS for the front end purpose and Python for backend. I'm like intermediate in Frontend but i can build user friendly websites through that. </p>
+        <p>Django is a high-level Python web framework that enables rapid development of secure and maintainable websites. Built by experienced developers, Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel..</p>
     </div>
    
 
 </section>
     <section class="section--1">
     <div class="skills--container">
-        <h3>More about me</h3>
+        <h3>Skills</h3>
 
         {% for skill in detailedSkills %}
         <div class="skill--wrapper">
+            {% if skill.logo %}
+                <img class="skill--logo" src="{{skill.logo.url}}" alt="">
+
+            {% endif %}
+            <div>
             <h5>{{skill.title}}</h5>
             <p>{{skill.body}}</p>
+             </div>
+
         </div>
         {% endfor %}
 
@@ -82,6 +89,7 @@
 </section>
 
 {% endblock content %}
+
 
     
 

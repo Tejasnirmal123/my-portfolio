@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+       
     }
 }
 
@@ -127,6 +129,12 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tejasnirmal05022001@gmail.com'
+EMAIL_HOST_PASSWORD = 'muhroqyvvmuscqfa'
+EMAIL_USE_TLS = 'True'
 
 MEDIA_URL='/images/'
 

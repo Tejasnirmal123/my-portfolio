@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Project
+from .models import Project, Question
 
 class ProjectForm(ModelForm):
 
@@ -15,4 +15,20 @@ def __init__(self, *args, **kwargs):
 
     self.fields['body'].widget.attrs.update(
          {'class': 'form-control', })
+    
+
+class QuestionForm(ModelForm):
+
+    class Meta:
+        model = Question
+        fields = '__all__'
+
+
+def __init__(self, *args, **kwargs):
+    super(QuestionForm, self).__init__(*args, **kwargs)
+    self.fields['answer'].widget.attrs.update(
+        {'class': 'form-control'})
+
+    
+       
        
