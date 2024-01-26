@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-xno+(0te#l(k7evcvn5lv21+zspynj=e3(c@m)dwk-80nhra+*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["127.0.0.1","crudoperations-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://crudoperations-production.up.railway.app"]
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
     'ckeditor',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -82,8 +84,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'g-FeB-c6C1b2Fc*ad25EDFcaCbdGCeCg',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '24318',
        
     }
 }
@@ -124,11 +130,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = [
-    STATIC_DIR,
+    BASE_DIR / 'static',
 ]
+STATIC_ROOT = (BASE_DIR / 'staticfiles')
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
