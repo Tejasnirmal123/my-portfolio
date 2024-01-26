@@ -1,16 +1,13 @@
 {% extends 'base/main.html '%}
 {% load static %}
-
-
-
-    {% block content %}
+{% block content %}
 
     
 
     <section class="hero">
         <div class="hero--content">
             <div class="hero--content--intro">
-            <img id="profile_pic" src="{% static 'images/tejas9.jpg' %}" alt="">
+            <img id="profile_pic" src="{% static 'images/tejas_profile1.jpg' %}" alt="">
             <h1 class="intro--name">Tejas <br> Nirmal</h1>
             </div>
             <div class="hero--content--subheadline">
@@ -18,14 +15,11 @@
                 <p class="slogan">Learn From Errors and build new things </p>
             </div>
         </div>
-
-        
-
     </section>
 
 <section class="container  section--2">
         <h3 class="title">My Projects</h3>
-    
+        <hr>
     <div class="project--wrapper">
         {% for project in projects %}
         <div class="project--column">
@@ -44,8 +38,17 @@
 
     <div class="about--wrapper">
         <h3>More About Me</h3>
-        <p>I am a Python full stack Web-Developer. I build projects to learn from my past mistakes and build new awesome things. I use HTML & CSS for the front end purpose and Python for backend. I'm like intermediate in Frontend but i can build user friendly websites through that. </p>
-        <p>Django is a high-level Python web framework that enables rapid development of secure and maintainable websites. Built by experienced developers, Django takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel..</p>
+        <hr>
+        <p>As a full-stack developer proficient in Python, I possess experience in 
+            various coding languages.such as Python, Django-python's web framework, 
+            django rest Framework, various python libraries such as NumPy, Pandas, 
+            matplotlib etc. My focus has been on developing expertise in Python development </p>
+        <p>I have completed several courses across different platforms. 
+            Recently, I completed a course on Python via Udemy, in addition to a course on Django, 
+            Python's popular web framework. Moreover, I have a solid understanding of HTML, CSS, 
+            Bootstrap, and JavaScript. Recently, I have been exploring Amazon Web Services (AWS) 
+            to expand my skill set and knowledge of cloud computing, and currently possess a basic 
+            understanding of its fundamental concepts.</p>
     </div>
    
 
@@ -70,7 +73,7 @@
 
        
 
-        <h3>Other Skills</h3>
+        <h3 class="other--skill--title">Other Skills</h3>
         <div class="other--skills--wrapper">
             {% for skill in skills %}
             <div class="skill--tag">

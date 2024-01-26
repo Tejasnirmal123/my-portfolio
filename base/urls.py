@@ -10,5 +10,7 @@ urlpatterns = [
     path('add-project/',views.addProject,name="add-project"),
     path('edit-project/<str:pk>/',views.editProject,name="edit-project"),
     path("chart/",views.chartPage,name='chart'),
+    path('add-skill/',views.addSkill,name="add-skill"),
+
 
 ]

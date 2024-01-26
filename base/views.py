@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Project, Skill, User
-from .forms import ProjectForm, QuestionForm
+from .forms import ProjectForm, QuestionForm, SkillForm
+from django.contrib.auth.decorators import login_required
+
 from django.http import HttpResponse
-from django.conf import settings
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -19,7 +20,7 @@ def projectPage(request,pk):
     context = {'project':project}
     return render(request, 'base/project.html',context)
 
-
+@login_required()
 def addProject(request):
     form = ProjectForm
 
@@ -33,8 +34,7 @@ def addProject(request):
     context = {'form':form}
     return render(request, 'base/project_form.html',context)
 
-
-
+@login_required()
 def editProject(request,pk):
     project = Project.objects.get(id=pk)
     form = ProjectForm(instance=project)
@@ -81,4 +81,14 @@ def chartPage(request):
         
         return redirect('chart')
     return render(request, 'base/chart.html', {'form':form})
+
+@login_required()
+def addSkill(request):
+    form = SkillForm()
+    if request.method == 'POST':
+        form = SkillForm(request.POST)
+        form.save()
+        return redirect('home')
+    context = {'form':form}
+    return render(request, 'base/skill_form.html', context)
 
