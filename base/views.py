@@ -18,7 +18,7 @@ def homePage(request):
 def projectPage(request,pk):
     project = Project.objects.get(id=pk)
     context = {'project':project}
-    return render(request, 'base/project.html',context)
+    return render(request, 'base/project.html', context)
 
 @login_required()
 def addProject(request):
@@ -32,7 +32,7 @@ def addProject(request):
 
 
     context = {'form':form}
-    return render(request, 'base/project_form.html',context)
+    return render(request, 'base/project_form.html', context)
 
 @login_required()
 def editProject(request,pk):
@@ -47,7 +47,7 @@ def editProject(request,pk):
 
 
     context = {'form':form}
-    return render(request, 'base/project_form.html',context)
+    return render(request, 'base/project_form.html', context)
 
 def contact(request):
    
