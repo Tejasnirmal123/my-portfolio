@@ -11,6 +11,10 @@ urlpatterns = [
     path('edit-project/<str:pk>/',views.editProject,name='edit-project'),
     path("chart/",views.chartPage,name='chart'),
     path('add-skill/',views.addSkill,name='add-skill'),
+    path("inbox/",views.inboxPage,name='inbox'),
+    path('message/<str:pk>/',views.messagePage,name='message'),
+
+
 
 
 ]

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Project, Skill, User
-from .forms import ProjectForm, QuestionForm, SkillForm
+from .models import Project, Skill, User, Message
+from .forms import ProjectForm, QuestionForm, SkillForm, MessageForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from django.http import HttpResponse
 from django.core.mail import send_mail
@@ -11,7 +12,20 @@ def homePage(request):
     projects = Project.objects.all()
     detailedSkills = Skill.objects.exclude(body='')
     skills = Skill.objects.filter(body='')
-    context = {'projects':projects, 'skills':skills,'detailedSkills':detailedSkills}
+
+    form = MessageForm()
+
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Message sent Successfully. ')
+            return redirect('/')
+
+
+
+    context = {'projects':projects, 'skills':skills,
+               'detailedSkills':detailedSkills, 'form':form}
     return render(request,'base/home.html', context) 
 
 
@@ -50,28 +64,17 @@ def editProject(request,pk):
     return render(request, 'base/project_form.html', context)
 
 def contact(request):
-   
+    form = MessageForm()
+
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        message = request.POST['message']
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Message sent Successfully. ')
+            return redirect('contact')
 
-
-        new_user = User(name=name, email=email, phone=phone, message=message)
-        new_user.save()
-
-        send_mail(
-            'Message From'+ name,
-            email,
-            message,
-            ['tejasnirmal11@gmail.com'],
-        )
-        return HttpResponse("FORM SUBMISSION IS SUCCESSFUL and YOUR MAIL IS RECEIVED")
-
-
-
-    return render(request,'base/contact.html')
+    context = {'form':form}
+    return render(request,'base/contact.html', context)
 
 def chartPage(request):
     form = QuestionForm()
@@ -91,4 +94,19 @@ def addSkill(request):
         return redirect('/')
     context = {'form':form}
     return render(request, 'base/skill_form.html', context)
+
+
+def inboxPage(request):
+    inbox = Message.objects.all().order_by('is_read')
+    unreadCount = Message.objects.filter(is_read=False).count()
+    context = {'inbox':inbox, 'unreadCount':unreadCount}
+    return render(request, 'base/inbox.html', context)
+
+
+def messagePage(request, pk):
+    message = Message.objects.get(id=pk)
+    message.is_read = True
+    message.save()
+    context = {'message':message}
+    return render(request, 'base/message.html', context)
 

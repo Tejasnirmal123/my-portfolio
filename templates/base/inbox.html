@@ -68,48 +68,46 @@
         }
     </style>
 
+    
 </head>
     {% include 'base/navbar.html' %}
 
-    {% if messages %}
 
-    {% for message in messages %}
-    <div class="alert alert-primary" role="alert">
-        {{ message }}
-    </div>
-    
-    {% endfor %}
+    <div class="container">
+        <h3 class="messages">My Messages</h3>
+        <h5>Unread Messages ({{unreadCount}})</h5>
 
-{% endif %}
+    
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sender</th>
 
-    <section class="section--2">
-        <div class="container">
-            <form class="contact--form" action="" method="POST">
-                {% csrf_token %}
-    
-                {% for field in form %}
-    
-                <div class="mb-3 row">
-                    <label id="exampleInputPassword1" class="form-label">{{field.label}}</label>
-                    {{field}}
-                </div>
-                 {% endfor %}
-    
-                 <input class="btn btn-primary btn-block" style="width: 100%;" type="submit" value="Submit Your Message">
-    
-            </form>
+                <th>Subject</th>
+                <th>Date Sent</th>
 
-            
-        </div>
-    
-    
-    
-    
-    </section>
+                
+            </tr>
+
+        </thead>
+
+        <tbody>
+            {% for message in inbox %}
+            {% if message.is_read %}
+            <tr>
+            {% else %}
+            <tr style="font-weight: 900;">
+                {% endif %}
+                <td>{{message.name}}</td>
 
 
+                <td><a href="{% url 'message' message.id %}">{{message.subject}}</a></td>
+                <td>{{message.created}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
 
-
+    </table>
+</div>
 </html>
-
