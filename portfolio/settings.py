@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-xno+(0te#l(k7evcvn5lv21+zspynj=e3(c@m)dwk-80nhra+*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","crudoperations-production.up.railway.app"]
-CSRF_TRUSTED_ORIGINS = ["https://crudoperations-production.up.railway.app"]
+ALLOWED_HOSTS = ["my-portfolio-production-8301.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://my-portfolio-production-8301.up.railway.app"]
 
 # Application definition
 
@@ -63,7 +63,9 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
