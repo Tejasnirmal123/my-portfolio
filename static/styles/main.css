@@ -105,7 +105,9 @@ h3{
 
 .intro--name{
     font-size: 80px;
+    letter-spacing: .1em;
     font-weight: 700;
+    line-height: .9em;
 }
 
 .title{
@@ -301,7 +303,7 @@ h3{
         padding-bottom: 50px;
         }
     .hero--content{
-        width: 100%;
+        width: 80%;
     }
     .hero--content--intro{
         gap: 1em;
@@ -357,4 +359,13 @@ h3{
     }
     
     
+}
+
+@media (max-width:400px){
+
+
+    .skill--wrapper{
+        flex-flow: column;
+        
+    }
 }
