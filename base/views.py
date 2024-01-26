@@ -28,7 +28,7 @@ def addProject(request):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('/')
 
 
     context = {'form':form}
@@ -43,7 +43,7 @@ def editProject(request,pk):
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('/')
 
 
     context = {'form':form}
@@ -88,7 +88,7 @@ def addSkill(request):
     if request.method == 'POST':
         form = SkillForm(request.POST)
         form.save()
-        return redirect('home')
+        return redirect('/')
     context = {'form':form}
     return render(request, 'base/skill_form.html', context)
 
