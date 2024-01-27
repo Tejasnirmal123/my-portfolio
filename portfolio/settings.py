@@ -142,11 +142,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tejasnirmal05022001@gmail.com'
-EMAIL_HOST_PASSWORD = 'muhroqyvvmuscqfa'
-EMAIL_USE_TLS = 'True'
+
 
 MEDIA_URL='/images/'
 
